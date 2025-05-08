@@ -1,0 +1,29 @@
+#Creador: Jessica Peralta
+#Llamado de bases de datos
+
+#LLamar la base de datos desde la computadora
+
+install.packages("readr")
+library(readr)
+
+#############################################
+#Llmar desde un repositorio
+
+repositorio <- read_csv(file = "https://raw.githubusercontent.com/ManuelLaraMVZ/Ejercicios_metabolomica/refs/heads/main/Manuel.csv")
+head(repositorio) #para ver el encabezado
+View (repositorio) #para ver la tabla
+
+#############################################
+#Gráfica
+
+install.packages("ggplot2")
+library(ggplot2)
+
+grafica <- ggplot(repositorio,
+                  aes(x= Mean_DCT_Cx,
+                  y = Mean_DCT_Tx))+
+  geom_line()+
+  theme_dark()
+grafica
+
+ggsave("repertorio.jpeg", plot = grafica, width = 6, height = 4, dpi = 500)
